@@ -1,0 +1,447 @@
+* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  /* Biar pas di HP, gak kepotong address bar */
+  background: linear-gradient(to bottom, #ffffff 0%, #ffe4ec 40%, #ffc0d4 70%, #ff8fab 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  padding: 15px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  width: 90%;
+  max-width: 380px;
+  padding: 30px 20px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(255, 100, 150, 0.25);
+  z-index: 10;
+  position: relative;
+}
+
+h1 {
+  font-size: 22px;
+  color: #d6336c;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* EMOJI NANGIS */
+.cry-wrap {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 10px;
+}
+
+.face {
+  width: 90px;
+  height: 90px;
+  background: #ffdf00;
+  border-radius: 50%;
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  top: 32px;
+  width: 10px;
+  height: 14px;
+  background: #222;
+  border-radius: 50%;
+}
+
+.eye.left {
+  left: 22px;
+}
+
+.eye.right {
+  right: 22px;
+}
+
+.mouth {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 16px;
+  border: 3px solid #222;
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+}
+
+.tear {
+  position: absolute;
+  top: 45px;
+  width: 9px;
+  height: 14px;
+  background: #4dabf7;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: jatuh 1.2s infinite;
+  opacity: 0;
+}
+
+.tear.left {
+  left: 18px;
+}
+
+.tear.right {
+  right: 18px;
+  animation-delay: 0.6s;
+}
+
+@keyframes jatuh {
+  0% {
+    transform: translateY(0) scale(0.7);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(45px) scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* TOMBOL */
+.btn-area {
+  position: relative;
+  height: 130px;
+  margin-top: 10px;
+}
+
+button {
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#btnYa {
+  background: #ff4d8d;
+  color: white;
+  box-shadow: 0 5px 15px rgba(255, 77, 141, 0.4);
+}
+
+.btnGa {
+  background: white;
+  color: #ff4d8d;
+  border: 2px solid #ff4d8d;
+  position: absolute;
+}
+
+#btnGaPertama {
+  right: 0;
+  top: 0;
+}
+
+/* GELEMBUNG TEXT + EMOJI */
+#bubbleContainer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  background: white;
+  color: #d6336c;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  animation: bubbleNaik 2.5s ease-out forwards;
+  white-space: nowrap;
+}
+
+@keyframes bubbleNaik {
+  0% {
+    transform: translateY(20px) scale(0.5);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  100% {
+    transform: translateY(-80px) scale(1);
+    opacity: 0;
+  }
+}
+
+/* HATI RETAK / LUKA */
+.broken-heart {
+  font-size: 60px;
+  display: inline-block;
+  animation: retak 0.6s ease-in-out infinite;
+}
+
+@keyframes retak {
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    transform: scale(1.15) rotate(-5deg);
+  }
+}
+
+.shake {
+  animation: goyang 0.4s;
+}
+
+@keyframes goyang {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-8px);
+  }
+
+  75% {
+    transform: translateX(8px);
+  }
+}
+
+/* INPUT JAWABAN */
+#inputArea input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #ffb3c9;
+  border-radius: 15px;
+  outline: none;
+  font-size: 15px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#btnKirimJawaban {
+  width: 100%;
+  background: #ff4d8d;
+  color: white;
+}
+
+#pesanError {
+  color: #e03131;
+  font-weight: bold;
+  min-height: 20px;
+}
+
+/* FINAL PAP */
+.btn-kamera {
+  display: block;
+  background: #ff8fab;
+  color: white;
+  padding: 12px;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+#btnWA {
+  display: block;
+  background: #25D366;
+  color: white;
+  padding: 14px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+/* HATI BETERBANGAN */
+.heart {
+  position: absolute;
+  bottom: -20px;
+  font-size: 20px;
+  animation: naik 4s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes naik {
+  to {
+    transform: translateY(-110vh) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+/* HP KECIL: iPhone SE, Android kecil, lebar 480px ke bawah */
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100%;
+    padding: 22px 16px;
+    border-radius: 20px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  .cry-wrap,
+  .face {
+    width: 75px;
+    height: 75px;
+  }
+
+  .eye {
+    top: 27px;
+    width: 9px;
+    height: 12px;
+  }
+
+  .eye.left {
+    left: 18px;
+  }
+
+  .eye.right {
+    right: 18px;
+  }
+
+  .mouth {
+    bottom: 15px;
+    width: 24px;
+    height: 13px;
+  }
+
+  .tear {
+    top: 38px;
+  }
+
+  .btn-area {
+    height: 150px;
+  }
+
+  button {
+    padding: 13px 22px;
+    font-size: 15px;
+  }
+
+  #btnYa {
+    padding: 13px 20px;
+  }
+
+  .bubble {
+    font-size: 12px;
+    padding: 7px 11px;
+    max-width: 80vw;
+  }
+
+  .broken-heart {
+    font-size: 50px;
+  }
+
+  #inputArea input {
+    font-size: 16px;
+    /* Biar keyboard HP gak nge-zoom */
+  }
+}
+
+/* HP SEDANG: 481px - 768px (HP gede, tablet kecil) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .card {
+    max-width: 420px;
+    padding: 28px 22px;
+  }
+
+  h1 {
+    font-size: 23px;
+  }
+
+  button {
+    padding: 15px 30px;
+    font-size: 17px;
+  }
+}
+
+/* LANDSCAPE HP: HP dimiringin */
+@media (max-height: 500px) and (orientation: landscape) {
+  body {
+    overflow-y: auto;
+    padding: 10px 0;
+    align-items: flex-start;
+  }
+
+  .card {
+    padding: 16px;
+    margin: 10px auto;
+  }
+
+  .cry-wrap,
+  .face {
+    width: 60px;
+    height: 60px;
+  }
+
+  .eye {
+    top: 22px;
+  }
+
+  .mouth {
+    bottom: 12px;
+  }
+
+  .btn-area {
+    height: 110px;
+  }
+
+  .bubble {
+    font-size: 11px;
+  }
+}
+
+/* LAYAR GEDE: Laptop / PC, biar gak kegedean */
+@media (min-width: 769px) {
+  .card {
+    max-width: 400px;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    transition: 0.3s;
+  }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buat Sayang</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="bubbleContainer"></div>
+
+  <div class="card">
+    <div class="cry-wrap" id="emojiArea">
+      <div class="face">
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="tear left"></div>
+        <div class="tear right"></div>
+        <div class="mouth"></div>
+      </div>
+    </div>
+
+    <h1 id="pertanyaan">Sayang aku gak? 🥺</h1>
+    <p id="sub">Jawab jujur ya...</p>
+
+    <!-- AREA INPUT TEXT - awalnya disembunyiin -->
+    <div id="inputArea" style="display:none;">
+      <input type="text" id="jawabanInput" placeholder="Ketik jawaban kamu disini..." autocomplete="off">
+      <button id="btnKirimJawaban">KIRIM 💌</button>
+      <p id="pesanError"></p>
+    </div>
+
+    <!-- AREA AKHIR PAP + WA -->
+    <div id="finalArea" style="display:none;">
+      <p style="font-size:15px; color:#d6336c; font-weight:bold;">Boleh dong kirim pap kamu ke aku 🥺📸</p>
+      <label for="inputKamera" class="btn-kamera">📷 BUKA KAMERA / PILIH FOTO</label>
+      <input type="file" id="inputKamera" accept="image/*" capture="user" style="display:none;">
+      <img id="previewPap" style="display:none; width:100%; border-radius:15px; margin-top:10px;">
+      <a id="btnWA" href="https://wa.me/6282282268350?text=Sayang%2C%20ini%20pap%20aku%20buat%20kamu%20%F0%9F%92%96"
+        target="_blank">KIRIM LEWAT WA 💚</a>
+      <p style="font-size:11px; margin-top:8px; color:#999;">Nanti langsung ke WA aku ya (082282268350)</p>
+    </div>
+
+    <div class="btn-area" id="btnArea">
+      <button id="btnYa">IYA SAYANG ❤️</button>
+      <button class="btnGa" id="btnGaPertama">GAK</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
